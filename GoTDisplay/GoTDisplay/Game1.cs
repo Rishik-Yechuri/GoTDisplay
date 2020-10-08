@@ -19,6 +19,8 @@ namespace GoTDisplay
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D characterTexture;
+        Rectangle characterRectangle;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -34,7 +36,7 @@ namespace GoTDisplay
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            characterRectangle = new Rectangle(500,200,300,300);
             base.Initialize();
         }
 
@@ -46,7 +48,7 @@ namespace GoTDisplay
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            characterTexture = this.Content.Load<Texture2D>("gotcharacter");
             // TODO: use this.Content to load your game content here
         }
 
@@ -84,7 +86,9 @@ namespace GoTDisplay
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            spriteBatch.Draw(characterTexture, characterRectangle, Color.White);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
